@@ -2,7 +2,11 @@
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("hey");
+	JavaProjectChecker ch = new JavaProjectChecker("C:\\Users\\DELL\\eclipse-workspace");
+	System.out.println(ch.projectPath);
+	System.out.println(ch.srcPath);
+	System.out.println(ch.workSpacePath);
+	System.out.println(ch.projectStatus);
 	}
 
 }
