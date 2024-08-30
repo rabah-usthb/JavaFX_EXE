@@ -23,7 +23,8 @@ int projectStatus;
 			this.projectStatus = 0;
 		}
 		else {
-			this.projectStatus = 1;
+			File file = new File(srcPath);
+			this.projectStatus = containJavaFile(file.listFiles());
 		}
 	}
 	
@@ -42,7 +43,7 @@ String fetch_projectPath(String InputFilePath){
 		return "   ";
 	}
 	if(InputFilePath.endsWith("/")) {
-		InputFilePath.substring(0, InputFilePath.lastIndexOf("/"));
+		InputFilePath=InputFilePath.substring(0, InputFilePath.lastIndexOf("/"));
 	}
 	while(!InputFilePath.matches(regex)&&InputFilePath.contains("/")) {
 
@@ -67,5 +68,18 @@ String fetch_projectPath(String InputFilePath){
 		return file.listFiles().length == 0;
 	}
 	
+	int containJavaFile(File[] list) {
+	     for(File file : list){
+	    	 if(file.isDirectory()&& file.listFiles().length!=0) { 
+	    		return containJavaFile(file.listFiles());
+	    	}
+	    	else if(file.isFile()&&file.getName().endsWith(".java")) {
+	    		
+	    		return 2;
+	    		
+	    	}
+	     }
+	     return 1;
+	}
 	
 }
