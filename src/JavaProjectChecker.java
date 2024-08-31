@@ -4,6 +4,7 @@ public class JavaProjectChecker {
 String projectPath;
 String srcPath;
 String workSpacePath;
+
 int projectStatus; 
 	JavaProjectChecker(String InputFilePath){
 		this.projectPath = fetch_projectPath(InputFilePath);
@@ -25,6 +26,16 @@ int projectStatus;
 		else {
 			File file = new File(srcPath);
 			this.projectStatus = containJavaFile(file.listFiles());
+		  if(this.projectStatus == 2) {
+			  JavaFxChecker FX = new JavaFxChecker(srcPath, workSpacePath);
+			  System.out.println(FX.JavaFile);
+			  System.out.println(FX.ProjectName);
+			  System.out.println(FX.FX_Status);
+			  System.out.println(FX.LauncherPath);
+			  System.out.println(FX.JavaFx_Module);
+			  System.out.println(FX.JavaFx_Path);
+			  System.out.println(FX.MainFile);
+		  }
 		}
 	}
 	
